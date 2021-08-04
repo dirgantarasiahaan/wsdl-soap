@@ -1,0 +1,71 @@
+<wsdl:definitions
+
+        targetNamespace="http://www.aprisma.co.id/PrismaGateway/"
+        xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+        xmlns:tns="http://www.aprisma.co.id/PrismaGateway/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+    <wsdl:types>
+        <schema elementFormDefault="unqualified" targetNamespace="http://www.aprisma.co.id/PrismaGateway/"
+                xmlns="http://www.w3.org/2001/XMLSchema">
+            <element name="Input">
+                <complexType>
+                    <sequence>
+                        <element minOccurs="0" name="REF_NO" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="Output">
+                <complexType>
+                    <sequence>
+                        <element minOccurs="0" name="remittance_no" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="Request">
+        <wsdl:part name="Input" element="tns:Input"/>
+    </wsdl:message>
+    <wsdl:message name="Response">
+        <wsdl:part name="Output" element="tns:Output"/>
+    </wsdl:message>
+    <wsdl:portType name="InquiryRemittanceNoPort">
+        <wsdl:operation name="InquiryRemittanceNo">
+            <wsdl:input message="tns:Request"/>
+            <wsdl:output message="tns:Response"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="InquiryRemittanceNoPortSoap11" type="tns:InquiryRemittanceNoPort">
+        <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="InquiryRemittanceNo">
+            <wsdl:input>
+                <soap11:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap11:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="InquiryRemittanceNoPortSoap12" type="tns:InquiryRemittanceNoPort">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="InquiryRemittanceNo">
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="InquiryRemittanceNo">
+        <wsdl:port name="Soap11" binding="tns:InquiryRemittanceNoPortSoap11">
+            <soap11:address location="http://10.243.215.42:9031/PrismaGateway/services/InquiryRemittanceNo.Soap11/"/>
+        </wsdl:port>
+        <wsdl:port name="Soap12" binding="tns:InquiryRemittanceNoPortSoap12">
+            <soap12:address location="http://10.243.215.42:9031/PrismaGateway/services/InquiryRemittanceNo.Soap12/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
