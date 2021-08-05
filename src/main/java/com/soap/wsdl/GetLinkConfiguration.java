@@ -8,9 +8,8 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 public class GetLinkConfiguration {
 
     @Bean
-    public Jaxb2Marshaller marshaller() {
+    public Jaxb2Marshaller  marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setClassesToBeBound(new Class<?>[] { Object.class });
         marshaller.setContextPath("com.soap.wsdl.wsdl");
         return marshaller;
     }

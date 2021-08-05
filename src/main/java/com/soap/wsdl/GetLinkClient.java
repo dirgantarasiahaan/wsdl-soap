@@ -7,10 +7,10 @@ import org.springframework.ws.soap.client.core.SoapActionCallback;
 
 public class GetLinkClient extends WebServiceGatewaySupport {
 
-    public Output getUrl() {
+    public Output getUrl(String remitanceNo) {
 
         Input request = new Input();
-        request.setREFNO("20174403948509910");
+        request.setREFNO(remitanceNo);
 
         Output response = (Output) getWebServiceTemplate()
                 .marshalSendAndReceive("http://10.243.215.42:9031/PrismaGateway/services/InquiryRemittanceNo.Soap11/",
